@@ -121,17 +121,17 @@ func convert_printable(text):
 	printable_label.parse_bbcode(printable)
 	var printable_stripped_bbcode = printable_label.text # Does not include bbcode text, but does include newlines
 	# (2) Count number of PAUSE_CHAR at indexes in which they appear.
-	while PAUSE_CHAR in printable_stripped_bbcode:
-		# Set index : count in pause_counts, based on index in text (excludes count of bbcode tags)
-		var curr_pause_index : int = printable_stripped_bbcode.find(PAUSE_CHAR)
-		var num_newline_sofar = printable_stripped_bbcode.count("\n", 0, curr_pause_index)
-		if not pause_counts.has(curr_pause_index):
-			# Subtracting newlines is somewhat hacky, but works due to discrepency between
-			# Godot's text stripped of bbcode, and visible characters (since \n is not a visible character)
-			pause_counts[curr_pause_index - num_newline_sofar] = 1
-		else:
-			pause_counts[curr_pause_index - num_newline_sofar] += 1
-		printable_stripped_bbcode.erase(curr_pause_index, PAUSE_CHAR.length())
+	#while PAUSE_CHAR in printable_stripped_bbcode:
+		## Set index : count in pause_counts, based on index in text (excludes count of bbcode tags)
+		#var curr_pause_index : int = printable_stripped_bbcode.find(PAUSE_CHAR)
+		#var num_newline_sofar = printable_stripped_bbcode.count("\n", 0, curr_pause_index)
+		#if not pause_counts.has(curr_pause_index):
+			## Subtracting newlines is somewhat hacky, but works due to discrepency between
+			## Godot's text stripped of bbcode, and visible characters (since \n is not a visible character)
+			#pause_counts[curr_pause_index - num_newline_sofar] = 1
+		#else:
+			#pause_counts[curr_pause_index - num_newline_sofar] += 1
+		#printable_stripped_bbcode.erase(curr_pause_index, PAUSE_CHAR.length())
 	
 	printable = printable.replace(PAUSE_CHAR, "")
 	printable_label.queue_free()

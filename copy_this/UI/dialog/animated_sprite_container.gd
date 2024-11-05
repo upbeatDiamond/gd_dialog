@@ -10,7 +10,15 @@ For simplicity, the current script assumes:
 	- All animated icon frames have the approx. same size.
 	- There is a "default" animation whose first frame is the same size as all icons.
 Does not account for manual scaling of icons - only matches original texture size.
+
+Info:
+	Godot Open Dialogue System
+	by Tina Qin (QueenChristina)
+	https://github.com/QueenChristina/gd_dialog
+	License: MIT.
+	Please credit me if you use! Thank you! <3
 """
+
 # tool # reload scene to see effect
 extends Container
 class_name AnimatedSpriteContainer

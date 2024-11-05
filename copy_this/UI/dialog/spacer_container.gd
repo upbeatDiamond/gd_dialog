@@ -4,7 +4,15 @@ An empty container to create vertical space matching another node.
 Purpose is to keep space even when other sibling container is hidden within 
 another container node, as if the sibling container was still present.
 Assumes other node (most likely sibling container node) has size property.
+
+Info:
+	Godot Open Dialogue System
+	by Tina Qin (QueenChristina)
+	https://github.com/QueenChristina/gd_dialog
+	License: MIT.
+	Please credit me if you use! Thank you! <3
 """
+
 extends MarginContainer
 class_name SpacerContainer
 
