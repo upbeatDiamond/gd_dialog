@@ -6,6 +6,13 @@ See Data/Dialogue.json for an example of required dialog node formatting.
 
 Dependencies:
 	Globals.db_dialog, Globals.END_DIALOG_ID
+
+Info:
+	Godot Open Dialogue System
+	by Tina Qin (QueenChristina)
+	https://github.com/QueenChristina/gd_dialog
+	License: MIT.
+	Please credit me if you use! Thank you! <3
 """
 extends Node
 class_name DialogNode
@@ -110,7 +117,7 @@ func convert_printable(text):
 	pause_counts = {}
 	# (1) Get the printable (displayed) text stripped of extra bbcode tags.
 	var printable_label  = RichTextLabel.new()
-	printable_label.bbcode_text = printable
+	printable_label.text = printable
 	printable_label.parse_bbcode(printable)
 	var printable_stripped_bbcode = printable_label.text # Does not include bbcode text, but does include newlines
 	# (2) Count number of PAUSE_CHAR at indexes in which they appear.

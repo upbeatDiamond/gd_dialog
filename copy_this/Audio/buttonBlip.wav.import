@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/buttonBlip.wav-6ed2df825731349db1cca1dbfe5e34e6.sample"
+type="AudioStreamWAV"
+uid="uid://dp1tfuhve2736"
+path="res://.godot/imported/buttonBlip.wav-4ce11f551562fcc6891206b660074624.sample"
 
 [deps]
 
-source_file="res://audio/buttonBlip.wav"
-dest_files=[ "res://.import/buttonBlip.wav-6ed2df825731349db1cca1dbfe5e34e6.sample" ]
+source_file="res://Audio/buttonBlip.wav"
+dest_files=["res://.godot/imported/buttonBlip.wav-4ce11f551562fcc6891206b660074624.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

@@ -11,8 +11,8 @@ extends Node
 signal pause
 signal unpause
 
-var talking = false setget set_state_talking, get_state_talking
-var cutscene = false setget set_state_cutscene, get_state_cutscene
+var talking = false: get = get_state_talking, set = set_state_talking
+var cutscene = false: get = get_state_cutscene, set = set_state_cutscene
 	
 func set_state_talking(is_talking):
 	talking = is_talking

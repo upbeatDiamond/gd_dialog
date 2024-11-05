@@ -21,8 +21,8 @@ signal dialog_ended(text_id)
 
 const PAUSE_TIME_MIN = 0.3
 const PAUSE_TIME_MAX = 1
-export var pause_time := 0.5	# Pause time in seconds when encounter a PAUSE_CHAR
-export var text_speed := 0.03 	# Text speed - the seconds to wait until next character.
+@export var pause_time := 0.5	# Pause time in seconds when encounter a PAUSE_CHAR
+@export var text_speed := 0.03 	# Text speed - the seconds to wait until next character.
 # Cannot be < 0.01 due to limitations of timer timeout signal. 
 	# TODO: automatically skip text if text_speed < 0.001, do not use timer.
 	# TODO: move to globals (settings!)
@@ -35,18 +35,18 @@ var talking = false # NOTE: both a GameState.talking and local talking state is 
 # dialog node is the active node. Error occurs if you replace local with global state
 # if there may be multiple dialog UIs in a game.
 
-onready var dialog_UI := self 
-onready var text_dialog := $TextBox/Margin/HBox/VBox/Text
-onready var text_name := $HBox/NameBox/Margin/Name
-onready var box_name := $HBox/NameBox
-onready var box_text := $TextBox
-onready var icon := $TextBox/Margin/HBox/PanelContainer/Icon
-onready var icon_container := $TextBox/Margin/HBox/PanelContainer
-onready var curr_voice := $Sound
-onready var timer := $Timer
-onready var choices := $TextBox/Margin/HBox/VBox/Choices
-onready var next_icon := $NextIcon
-onready var curr_dialog_node = $DialogNode
+@onready var dialog_UI := self 
+@onready var text_dialog := $TextBox/Margin/HBox/VBox/Text
+@onready var text_name := $HBox/NameBox/Margin/Name
+@onready var box_name := $HBox/NameBox
+@onready var box_text := $TextBox
+@onready var icon := $TextBox/Margin/HBox/PanelContainer/Icon
+@onready var icon_container := $TextBox/Margin/HBox/PanelContainer
+@onready var curr_voice := $Sound
+@onready var timer := $Timer
+@onready var choices := $TextBox/Margin/HBox/VBox/Choices
+@onready var next_icon := $NextIcon
+@onready var curr_dialog_node = $DialogNode
 
 func _ready():
 	_on_set_text_speed(text_speed)
@@ -84,7 +84,7 @@ func set_curr(id):
 		if curr_dialog_node.speaker != "" :
 			box_name.visible = true
 		# Set text box
-		text_dialog.bbcode_text = curr_dialog_node.printable_text
+		text_dialog.text = curr_dialog_node.printable_text
 		text_dialog.visible_characters = 0
 		# Set icon
 		if curr_dialog_node.icon != "none":
@@ -116,7 +116,7 @@ func resize_control_nodes():
 func continue_dialog():
 	# Case 1: text was mid printing, so we want to skip text animation and show rest of text
 	if text_not_all_visible():
-		text_dialog.visible_characters = text_dialog.bbcode_text.length()
+		text_dialog.visible_characters = text_dialog.text.length()
 		show_choices()
 	else:
 		# Case 2: text was done printing, so we want to go to next portion of dialog
@@ -124,7 +124,7 @@ func continue_dialog():
 			var can_move_to_next_id = !curr_dialog_node.set_next_text_index()
 			if !can_move_to_next_id:
 				# - (A) We can move to next text_index 
-				text_dialog.bbcode_text = curr_dialog_node.printable_text
+				text_dialog.text = curr_dialog_node.printable_text
 				text_dialog.visible_characters = 0
 				next_icon.hide()
 				resize_control_nodes()
@@ -169,7 +169,7 @@ func _on_timer_timeout():
 		# Pause if hit PAUSE_CHAR just before next visible character.
 		if curr_dialog_node.pause_count_at(text_dialog.visible_characters) != 0:
 			timer.stop()
-			yield(get_tree().create_timer(pause_time), "timeout")
+			await get_tree().create_timer(pause_time).timeout
 			timer.start()
 			force_voice = true # always voice a character after a pause
 		curr_voice.voice(force_voice)

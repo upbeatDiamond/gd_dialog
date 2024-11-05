@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/buttonBoop.wav-ab3e2336721eb3ecba3430775a608ca2.sample"
+type="AudioStreamWAV"
+uid="uid://t4knjd3xcjk0"
+path="res://.godot/imported/buttonBoop.wav-adb6b1e7391031006c10cf5570f39061.sample"
 
 [deps]
 
-source_file="res://audio/buttonBoop.wav"
-dest_files=[ "res://.import/buttonBoop.wav-ab3e2336721eb3ecba3430775a608ca2.sample" ]
+source_file="res://Audio/buttonBoop.wav"
+dest_files=["res://.godot/imported/buttonBoop.wav-adb6b1e7391031006c10cf5570f39061.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

@@ -4,6 +4,13 @@ with cooresponding next dialog id accordingly. Visibility is controlled by paren
 
 Dependencies:
 	Globals.END_DIALOG_ID
+
+Info:
+	Godot Open Dialogue System
+	by Tina Qin (QueenChristina)
+	https://github.com/QueenChristina/gd_dialog
+	License: MIT.
+	Please credit me if you use! Thank you! <3
 """
 
 extends HBoxContainer
@@ -11,8 +18,8 @@ class_name DialogChoices
 
 signal choice_selected(next_id)
 
-onready var button_container = $VBox
-onready var button_sound = self.owner.get_node("ButtonSound")
+@onready var button_container = $VBox
+@onready var button_sound = self.owner.get_node("ButtonSound")
 
 # TODO: If choices text short, then add columns instead of rows, looks nicer for Yes/No.
 # (1) Add HBox + Button if choices total text length is short enough (horizontal style)
@@ -47,9 +54,9 @@ func set_buttons(choices):
 			var action = null
 			if "action" in choice:
 				action = choice["action"]
-			button.connect("pressed", self, "_on_button_pressed", [next_id, action])
-			button.connect("focus_entered", button_sound, "_on_choice_hovered")
-			button.connect("mouse_entered", button_sound, "_on_choice_hovered")
+			button.connect("pressed", Callable(self, "_on_button_pressed").bind(next_id, action))
+			button.connect("focus_entered", Callable(button_sound, "_on_choice_hovered"))
+			button.connect("mouse_entered", Callable(button_sound, "_on_choice_hovered"))
 	# Error checking; expect to have at least one visible choice.
 	if choices.size() > 0 and button_container.get_child_count() == 0:
 		print("WARNING: No choices set. Check your conditionals.")
@@ -61,4 +68,3 @@ func _on_button_pressed(next_id, action):
 			print("Execute " + act)
 			Globals.execute(act)
 	emit_signal("choice_selected", next_id)
-

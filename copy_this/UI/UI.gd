@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 signal dialog_ended(text_id)
-onready var dialog = $Dialog
+@onready var dialog = $Dialog
 
 func start_dialog(index, dialog_style = ""):
 	# TODO: you can specify your own dialog style and change

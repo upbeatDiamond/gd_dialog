@@ -10,14 +10,22 @@ For instance, you may keep a dictionairy or json of each possible syllable
 and make a sound each syllable, or voice each letter and make a sound based on that.
 
 Dependencies: Global.db_voices
+
+Info:
+	Godot Open Dialogue System
+	by Tina Qin (QueenChristina)
+	https://github.com/QueenChristina/gd_dialog
+	License: MIT.
+	Please credit me if you use! Thank you! <3
 """
+
 extends AudioStreamPlayer
 class_name DialogSound
 
 # TODO: define yourself the voice variable name and preload audio here,
 # matching the sound value in Voices.json, or just specify
 # the path to load audio in Voices.json
-export(String, FILE) var default
+@export var default :String # (String, FILE)
 
 var voice_id := ""
 var sound
@@ -39,8 +47,7 @@ func init(id):
 	letters_played = 0
 	if "sound" in voice_info:
 		# (1) You defined sound as audio path
-		var file = File.new()
-		var does_file_exist = file.file_exists(voice_info["sound"])
+		var does_file_exist = FileAccess.file_exists(voice_info["sound"])
 		if does_file_exist:
 			sound = load(voice_info["sound"])
 		else:

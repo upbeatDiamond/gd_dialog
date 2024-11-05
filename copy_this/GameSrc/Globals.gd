@@ -1,13 +1,21 @@
 """
 Simple Global variables.
 TODO: move data to GAME.data or somewhere more organized w/ execute and condition checking, since dialog specific
+
+Info:
+	Godot Open Dialogue System
+	by Tina Qin (QueenChristina)
+	https://github.com/QueenChristina/gd_dialog
+	License: MIT.
+	Please credit me if you use! Thank you! <3
 """
+
 extends Node
 
 signal screen_shake
 
-export var dialog_file = "res://Data/Dialogue.json"
-export var voices_file = "res://Data/Voices.json"
+@export var dialog_file = "res://Data/Dialogue.json"
+@export var voices_file = "res://Data/Voices.json"
 
 # database of all dialogues and voices, as JSON
 var db_dialog 
@@ -126,10 +134,12 @@ func compare(thing1, operator : String, thing2):
 
 # Loads a file as JSON, returns JSON
 func LoadFile(file_name):
-	var file = File.new()
-	if file.file_exists(file_name):
-		file.open(file_name, file.READ)
-		var file_content = parse_json(file.get_as_text())
+	var file #= FileAccess.new()
+	if FileAccess.file_exists(file_name):
+		file = FileAccess.open(file_name, FileAccess.READ)
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		var file_content = test_json_conv.get_data()
 		if file_content == null:
 			print("Could not parse " + file_name + " as JSON." + \
 			"Please check syntax is correct, and that file is not empty.")

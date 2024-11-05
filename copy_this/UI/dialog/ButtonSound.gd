@@ -1,8 +1,8 @@
 extends AudioStreamPlayer
 
 # Sounds to play with button selection
-export(String, FILE) var chosenSound
-export(String, FILE) var hoveringSound
+@export var chosenSound :String # (String, FILE)
+@export var hoveringSound :String # (String, FILE)
 
 var chosen
 var hovering
