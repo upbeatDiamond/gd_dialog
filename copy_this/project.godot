@@ -19,7 +19,7 @@ config/icon="res://icon.png"
 
 UI="*res://dialog/UI/UI.tscn"
 GameState="*res://dialog/gameSrc/GameState.gd"
-Globals="*res://dialog/gameSrc/global_dialogue.gd"
+GlobalDialog="*res://dialog/gameSrc/global_dialogue.gd"
 
 [dotnet]
 

@@ -5,7 +5,7 @@ It tracks:
 See Data/Dialogue.json for an example of required dialog node formatting.
 
 Dependencies:
-	Globals.db_dialog, Globals.END_DIALOG_ID
+	GlobalDialog.db_dialog, GlobalDialog.END_DIALOG_ID
 
 Info:
 	Godot Open Dialogue System
@@ -34,15 +34,15 @@ var action := []			# Action executed at end of text dialog. (optional)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	next_id = Globals.END_DIALOG_ID
+	next_id = GlobalDialog.END_DIALOG_ID
 
 # Initializes a dialogNode with given dialog id, curr_id
-#	curr_id - the id of this DialogNode, assumes key matching curr_id exists in Globals.db_dialog
+#	curr_id - the id of this DialogNode, assumes key matching curr_id exists in GlobalDialog.db_dialog
 func init(curr_id):
 	set_default_values()
 	
 	id = curr_id
-	var curr_dialog = Globals.db_dialog[id]
+	var curr_dialog = GlobalDialog.db_dialog[id]
 	if "name" in curr_dialog:
 		speaker = curr_dialog["name"]
 	if "voice" in curr_dialog:
@@ -67,7 +67,7 @@ func init(curr_id):
 					# increasing precedence. Assumes each is a dictionary {"id" : "next_id", "if" : "condition"} 
 					# Defaults to last next_id (a string) if no conditions are met.
 					for next in nexts.slice(0, nexts.size() - 2):
-						if Globals.is_condition_met(next["if"]):
+						if GlobalDialog.is_condition_met(next["if"]):
 							next_id = next["id"]
 
 	if "action" in curr_dialog:
@@ -108,7 +108,7 @@ func set_next_text_index() -> bool:
 func convert_printable(text):
 	# (A) Replace NAME_CHAR with name
 	var printable = text
-	printable = printable.replace(NAME_CHAR, Globals.player_name)
+	printable = printable.replace(NAME_CHAR, GlobalDialog.player_name)
 	
 	# (B) Get indexes (text character) just before which to pause, with value of how 
 	# long to pause for (count of how many PAUSE_CHAR).

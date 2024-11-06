@@ -28,7 +28,7 @@ var player_name = "Bobby" # TODO: move to Player stats
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# TODO: Store in global variables, so load only once per file (not each instance of Dialog)
-	db_dialog = LoadFile(dialog_file) #Globals.db_dialog
+	db_dialog = LoadFile(dialog_file) #GlobalDialog.db_dialog
 	db_voices = LoadFile(voices_file)
 	
 # TODO: validate database. Debug script that validates db_dialog and db_voices when loaded. Then, remove 
@@ -99,7 +99,7 @@ func is_condition_met(condition : String):
 	var operator = cond_parsed[2].to_lower()
 	var value = cond_parsed[3]
 	if var_source == "data":
-		# Use variable keys in Globals.data dictionary
+		# Use variable keys in GlobalDialog.data dictionary
 		if not data.has(variable):
 			print("WARNING: data key of " + variable + "not set. " + \
 				"Attempting to compare with defaulted assumed value of false.")

@@ -71,7 +71,7 @@ func end_dialog():
 	
 # Set curr_dialog_node by text id, the current dialog to display.
 func set_curr(id):
-	if id == Globals.END_DIALOG_ID:
+	if id == GlobalDialog.END_DIALOG_ID:
 		end_dialog()
 		emit_signal("dialog_ended", id) # FIX: should be id before end.
 	else:
@@ -104,7 +104,7 @@ func set_curr(id):
 		# TODO: Decide whether actions should be executed at start or end of dialog.
 		# Currently, executes actions at start of dialog, but after initialization of dialog.
 		for act in curr_dialog_node.action:
-			Globals.execute(act)
+			GlobalDialog.execute(act)
 		
 # Resizes dialog UI to fit content.
 func resize_control_nodes():

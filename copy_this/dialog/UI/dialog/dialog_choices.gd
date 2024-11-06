@@ -3,7 +3,7 @@ DialogChoices recieves an array of choices and creates buttons for each choices
 with cooresponding next dialog id accordingly. Visibility is controlled by parent dialog UI.
 
 Dependencies:
-	Globals.END_DIALOG_ID
+	GlobalDialog.END_DIALOG_ID
 
 Info:
 	Godot Open Dialogue System
@@ -42,7 +42,7 @@ func set_buttons(choices):
 	# Populate with current choices.
 	for choice in choices:
 		if not ("show_only_if" in choice) or \
-			("show_only_if" in choice and Globals.is_condition_met(choice["show_only_if"])):
+			("show_only_if" in choice and GlobalDialog.is_condition_met(choice["show_only_if"])):
 			# Show choice button if there is no conditional.
 			# If there is a condition, only show choice if the condition in show_only_if is met.
 			var button = Button.new()
@@ -50,7 +50,7 @@ func set_buttons(choices):
 			button_container.add_child(button)
 			var next_id = choice["next"]
 			if next_id == "" :
-				next_id = Globals.END_DIALOG_ID
+				next_id = GlobalDialog.END_DIALOG_ID
 			var action = null
 			if "action" in choice:
 				action = choice["action"]
@@ -66,5 +66,5 @@ func _on_button_pressed(next_id, action):
 	if action:
 		for act in action:
 			print("Execute " + act)
-			Globals.execute(act)
+			GlobalDialog.execute(act)
 	emit_signal("choice_selected", next_id)
