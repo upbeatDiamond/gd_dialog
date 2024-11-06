@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://b4i06kohjvbus"]
 
-[ext_resource type="Script" path="res://UI/dialog/dialog.gd" id="4"]
-[ext_resource type="Script" path="res://UI/dialog/dialog_node.gd" id="5"]
-[ext_resource type="Texture2D" uid="uid://dx4vpyf5rc150" path="res://assets/TestIcon.png" id="6"]
-[ext_resource type="Script" path="res://UI/dialog/spacer_container.gd" id="8"]
-[ext_resource type="Script" path="res://UI/dialog/animated_sprite_container.gd" id="9"]
-[ext_resource type="Script" path="res://UI/dialog/dialog_choices.gd" id="10"]
-[ext_resource type="PackedScene" path="res://UI/dialog/dialog_voice.tscn" id="11"]
-[ext_resource type="Script" path="res://UI/dialog/ButtonSound.gd" id="14"]
-[ext_resource type="Texture2D" uid="uid://ce1s33euya5ly" path="res://UI/dialog/Next.png" id="16"]
+[ext_resource type="Script" path="res://dialog/UI/dialog/dialog.gd" id="4"]
+[ext_resource type="Script" path="res://dialog/UI/dialog/dialog_node.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://dx4vpyf5rc150" path="res://dialog/assets/TestIcon.png" id="6"]
+[ext_resource type="Script" path="res://dialog/UI/dialog/spacer_container.gd" id="8"]
+[ext_resource type="Script" path="res://dialog/UI/dialog/animated_sprite_container.gd" id="9"]
+[ext_resource type="Script" path="res://dialog/UI/dialog/dialog_choices.gd" id="10"]
+[ext_resource type="PackedScene" path="res://dialog/UI/dialog/dialog_voice.tscn" id="11"]
+[ext_resource type="Script" path="res://dialog/UI/dialog/ButtonSound.gd" id="14"]
+[ext_resource type="Texture2D" uid="uid://ce1s33euya5ly" path="res://dialog/UI/dialog/Next.png" id="16"]
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
@@ -142,7 +142,6 @@ z_index = 1
 position = Vector2(516.978, 158.834)
 
 [node name="Next" type="Sprite2D" parent="NextIcon"]
-position = Vector2(0, -2.25304)
 texture = ExtResource("16")
 centered = false
 
@@ -155,12 +154,12 @@ autoplay = "Idle"
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
 script = ExtResource("14")
-chosenSound = "res://Audio/buttonBlip.wav"
-hoveringSound = "res://Audio/buttonBoop.wav"
+chosenSound = "res://dialog/audio/buttonBlip.wav"
+hoveringSound = "res://dialog/audio/buttonBoop.wav"
 
 [node name="Sound" parent="." instance=ExtResource("11")]
 stream = null
-default = "res://audio/boop.wav"
+default = "res://dialog/audio/boop.wav"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="choice_selected" from="TextBox/Margin/HBox/VBox/Choices" to="." method="_on_choice_selected"]

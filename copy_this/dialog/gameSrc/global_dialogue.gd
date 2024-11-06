@@ -14,8 +14,8 @@ extends Node
 
 signal screen_shake
 
-@export var dialog_file = "res://Data/Dialogue.json"
-@export var voices_file = "res://Data/Voices.json"
+@export var dialog_file = "res://dialog/data/Dialogue.json"
+@export var voices_file = "res://dialog/data/Voices.json"
 
 # database of all dialogues and voices, as JSON
 var db_dialog 
@@ -146,4 +146,6 @@ func LoadFile(file_name):
 		return file_content
 	else:
 		print("File Open Error: could not open file " + file_name)
-	file.close()
+	
+	if file != null:
+		file.close()

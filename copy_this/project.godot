@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="GD Dialog Main"
-run/main_scene="res://scenes/World.tscn"
+run/main_scene="res://dialog/scenes/World.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
 [autoload]
 
-UI="*res://UI/UI.tscn"
-GameState="*res://gameSrc/GameState.gd"
-Globals="*res://gameSrc/Globals.gd"
+UI="*res://dialog/UI/UI.tscn"
+GameState="*res://dialog/gameSrc/GameState.gd"
+Globals="*res://dialog/gameSrc/global_dialogue.gd"
 
 [dotnet]
 

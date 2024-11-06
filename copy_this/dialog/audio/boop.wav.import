@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dp1tfuhve2736"
-path="res://.godot/imported/buttonBlip.wav-4ce11f551562fcc6891206b660074624.sample"
+uid="uid://o0bqrf07cmrr"
+path="res://.godot/imported/boop.wav-9947ae2d3470ef692381a37be4a02ec8.sample"
 
 [deps]
 
-source_file="res://Audio/buttonBlip.wav"
-dest_files=["res://.godot/imported/buttonBlip.wav-4ce11f551562fcc6891206b660074624.sample"]
+source_file="res://dialog/audio/boop.wav"
+dest_files=["res://.godot/imported/boop.wav-9947ae2d3470ef692381a37be4a02ec8.sample"]
 
 [params]
 
